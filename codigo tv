@@ -1,1 +1,20 @@
+import asyncio
+from aiowebostv import WebOsClient
+
+async def main():
+    # Replace with your TV's actual IP address
+    host = "192.168.1.XX" 
+    # Use None for the first connection; save the returned key for future use
+    client_key = None 
+
+    client = WebOsClient(host, client_key)
+    await client.connect()
+    
+    print(f"Connected! Client key: {client.client_key}")
+    print(f"TV Info: {client.tv_info}")
+    
+    await client.disconnect()
+
+if __name__ == "__main__":
+    asyncio.run(main())
 
